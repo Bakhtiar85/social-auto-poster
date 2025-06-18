@@ -7,9 +7,12 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
-    "test": "jest",
     "lint": "eslint src/**/*.ts",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "test": "npx ts-node --require tsconfig-paths/register tests/run-all-tests.ts",
+    "test:github": "npx ts-node --require tsconfig-paths/register tests/github-services.test.ts",
+    "test:ai": "npx ts-node --require tsconfig-paths/register tests/ai-services.test.ts",
+    "test:memory": "npx ts-node --require tsconfig-paths/register tests/memory-services.test.ts"
   },
   "keywords": [
     "automation",

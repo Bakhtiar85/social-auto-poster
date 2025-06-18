@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "mc1kqhg9oq0n2a8qnb",
+    "commitSha": "test123",
+    "platform": "linkedin",
+    "content": "Just implemented a new user authentication system! 🔐 Enhanced security and better user experience. #coding #webdev #security",
+    "imageUrl": "https://example.com/image.jpg",
+    "postedAt": "2025-06-18T06:31:32.313Z",
+    "engagement": {
+      "likes": 15,
+      "comments": 3,
+      "shares": 2
+    }
+  }
+]

@@ -1,6 +1,21 @@
 {
   "lastPostedCommit": "test123",
   "lastPostDate": "2025-06-18T06:31:32.313Z",
+  "postHistory": [
+    {
+      "id": "mc1kqhg9oq0n2a8qnb",
+      "commitSha": "test123",
+      "platform": "linkedin",
+      "content": "Just implemented a new user authentication system! 🔐 Enhanced security and better user experience. #coding #webdev #security",
+      "imageUrl": "https://example.com/image.jpg",
+      "postedAt": "2025-06-18T06:31:32.313Z",
+      "engagement": {
+        "likes": 15,
+        "comments": 3,
+        "shares": 2
+      }
+    }
+  ],
   "projectContext": {
     "projectName": "Social Auto Poster",
     "description": "Automated social media posting from GitHub commits",
@@ -20,23 +35,9 @@
       "ui"
     ],
     "audienceKnows": [],
-    "lastPostedCommit": "test123",
-    "lastPostDate": "2025-06-18T06:31:32.313Z",
-    "postHistory": [
-      {
-        "id": "mc1kqhg9oq0n2a8qnb",
-        "commitSha": "test123",
-        "platform": "linkedin",
-        "content": "Just implemented a new user authentication system! 🔐 Enhanced security and better user experience. #coding #webdev #security",
-        "imageUrl": "https://example.com/image.jpg",
-        "postedAt": "2025-06-18T06:31:32.313Z",
-        "engagement": {
-          "likes": 15,
-          "comments": 3,
-          "shares": 2
-        }
-      }
-    ],
+    "lastPostedCommit": "",
+    "lastPostDate": "",
+    "postHistory": [],
     "projectContext": {
       "projectName": "Social Auto Poster",
       "description": "Automated social media posting from GitHub commits",
@@ -48,13 +49,9 @@
         "LinkedIn",
         "Facebook"
       ],
-      "currentPhase": "testing",
+      "currentPhase": "development",
       "milestones": [],
-      "recentTopics": [
-        "authentication",
-        "security",
-        "ui"
-      ],
+      "recentTopics": [],
       "audienceKnows": [],
       "lastPostedCommit": "",
       "lastPostDate": "",
@@ -73,49 +70,7 @@
         "currentPhase": "development",
         "milestones": [],
         "recentTopics": [],
-        "audienceKnows": [],
-        "lastPostedCommit": "",
-        "lastPostDate": "",
-        "postHistory": [],
-        "projectContext": {
-          "projectName": "Social Auto Poster",
-          "description": "Automated social media posting from GitHub commits",
-          "techStack": [
-            "Node.js",
-            "TypeScript",
-            "OpenRouter",
-            "GitHub",
-            "LinkedIn",
-            "Facebook"
-          ],
-          "currentPhase": "development",
-          "milestones": [],
-          "recentTopics": [],
-          "audienceKnows": []
-        },
-        "narrativeContext": {
-          "currentStoryline": "",
-          "ongoingFeatures": [
-            {
-              "name": "User",
-              "startedAt": "2025-06-18T06:31:32.304Z",
-              "lastMentioned": "2025-06-18T06:31:32.304Z",
-              "commits": [
-                "abc123"
-              ],
-              "status": "starting"
-            }
-          ],
-          "mentionedConcepts": [],
-          "buildingUp": [],
-          "completedArcs": []
-        },
-        "settings": {
-          "maxHistoryDays": 30,
-          "avoidRepeatTopicsDays": 7,
-          "referenceOldPostsFrequency": 0.3,
-          "contextAwareness": true
-        }
+        "audienceKnows": []
       },
       "narrativeContext": {
         "currentStoryline": "",
@@ -146,10 +101,10 @@
       "ongoingFeatures": [
         {
           "name": "User",
-          "startedAt": "2025-06-18T06:31:32.313Z",
-          "lastMentioned": "2025-06-18T06:31:32.313Z",
+          "startedAt": "2025-06-18T06:31:32.304Z",
+          "lastMentioned": "2025-06-18T06:31:32.304Z",
           "commits": [
-            "test123"
+            "abc123"
           ],
           "status": "starting"
         }
