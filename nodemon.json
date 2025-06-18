@@ -1,0 +1,21 @@
+{
+    "watch": [
+        "src"
+    ],
+    "ext": "ts,json",
+    "ignore": [
+        "src/**/*.spec.ts",
+        "src/**/*.test.ts",
+        "node_modules",
+        "dist",
+        "logs",
+        "src/data/memory/*.json"
+    ],
+    "exec": "ts-node --require tsconfig-paths/register src/app.ts",
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "delay": 1000,
+    "verbose": true,
+    "restartable": "rs"
+}
