@@ -1,0 +1,50 @@
+.
+├── README.md
+├── logs.log
+├── node_modules
+│   ├── .....
+|   └── .....
+├── nodemon.json
+├── package-lock.json
+├── package.json
+├── src
+│   ├── app.ts
+│   ├── config
+│   │   ├── apis.ts
+│   │   ├── database.ts
+│   │   └── index.ts
+│   ├── data
+│   │   ├── memory
+│   │   │   ├── context.json
+│   │   │   └── post-history.json
+│   │   └── templates
+│   │       └── prompts.ts
+│   ├── scheduler
+│   │   ├── cron-jobs.ts
+│   │   └── queue-manager.ts
+│   ├── services
+│   │   ├── ai
+│   │   │   ├── content-generator.ts
+│   │   │   └── image-generator.ts
+│   │   ├── github
+│   │   │   ├── collector.ts
+│   │   │   └── parser.ts
+│   │   ├── memory
+│   │   │   ├── context-manager.ts
+│   │   │   └── store.ts
+│   │   └── social
+│   │       ├── base-publisher.ts
+│   │       ├── facebook.ts
+│   │       └── linkedin.ts
+│   ├── types
+│   │   ├── github.ts
+│   │   ├── index.ts
+│   │   ├── memory.ts
+│   │   └── social.ts
+│   └── utils
+│       ├── helpers.ts
+│       ├── logger.ts
+│       └── validators.ts
+└── tsconfig.json
+
+1207 directories, 8904 files
