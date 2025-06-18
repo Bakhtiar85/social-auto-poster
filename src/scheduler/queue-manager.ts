@@ -1,7 +1,7 @@
 // src/scheduler/queue-manager.ts
 
 import { createServiceLogger } from '@/utils/logger';
-import { createApiResponse, generateId, sleep } from '@/utils/helpers';
+import { createApiResponse, generateId } from '@/utils/helpers';
 import { ApiResponse } from '@/types';
 import { app } from '@/app';
 import { memoryStore } from '@/services/memory/store';

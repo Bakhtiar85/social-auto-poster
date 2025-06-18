@@ -2,7 +2,7 @@
 
 import { ProcessedCommit, OngoingFeature, ApiResponse, CommitCategory } from '@/types';
 import { memoryStore } from './store';
-import { createApiResponse, dateUtils, stringUtils, arrayUtils } from '@/utils/helpers';
+import { createApiResponse, dateUtils, stringUtils } from '@/utils/helpers';
 import { createServiceLogger } from '@/utils/logger';
 
 const logger = createServiceLogger('ContextManager');
@@ -223,6 +223,7 @@ class ContextManagerService {
             techHighlights: [] as string[]
         };
 
+        logger.debug('Building narrative elements from commits' + memory)
         // Find main focus (category with most significant commits)
         let maxScore = 0;
         for (const [category, commits] of Object.entries(commitsByCategory)) {

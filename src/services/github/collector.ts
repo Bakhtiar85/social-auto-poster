@@ -1,6 +1,6 @@
 // src/services/github/collector.ts
 
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { GitHubCommit, ApiResponse } from '@/types';
 import { config } from '@/config';
 import { API_ENDPOINTS, DEFAULT_HEADERS, REQUEST_TIMEOUTS, RETRY_CONFIG } from '@/config/apis';

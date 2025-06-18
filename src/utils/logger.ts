@@ -1,7 +1,6 @@
 // src/utils/logger.ts
 
 import winston from 'winston';
-import path from 'path';
 import { config } from '@/config';
 import { STORAGE_PATHS } from '@/config/database';
 

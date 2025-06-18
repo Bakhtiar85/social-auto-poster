@@ -4,7 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { MemoryStore, PostHistory, ApiResponse } from '@/types';
 import { STORAGE_PATHS, DEFAULT_MEMORY_STORE, BACKUP_CONFIG } from '@/config/database';
-import { createApiResponse, safeJsonParse, generateId } from '@/utils/helpers';
+import { createApiResponse, safeJsonParse } from '@/utils/helpers';
 import { createServiceLogger } from '@/utils/logger';
 
 const logger = createServiceLogger('MemoryStore');

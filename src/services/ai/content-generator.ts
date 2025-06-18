@@ -1,9 +1,9 @@
 // src/services/ai/content-generator.ts
 
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { ProcessedCommit, PostContent, SocialPlatform, PostTone, PostLength, ApiResponse } from '@/types';
 import { config } from '@/config';
-import { API_ENDPOINTS, DEFAULT_HEADERS, REQUEST_TIMEOUTS, RETRY_CONFIG } from '@/config/apis';
+import { DEFAULT_HEADERS, REQUEST_TIMEOUTS, RETRY_CONFIG } from '@/config/apis';
 import { CONTENT_GENERATION_PROMPTS, HASHTAG_SUGGESTIONS, PLATFORM_SPECIFIC_ADJUSTMENTS } from '@/data/templates/prompts';
 import { createApiResponse, retry, stringUtils } from '@/utils/helpers';
 import { createServiceLogger, logApiRequest } from '@/utils/logger';
@@ -289,7 +289,7 @@ class ContentGeneratorService {
      */
     private parseAIResponse(aiResponse: string, platform: SocialPlatform): PostContent | null {
         try {
-            const lines = aiResponse.split('\n').filter(line => line.trim());
+            // const lines = aiResponse.split('\n').filter(line => line.trim());
 
             // Extract hashtags
             const hashtags = stringUtils.extractHashtags(aiResponse);

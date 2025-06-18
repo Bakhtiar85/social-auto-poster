@@ -230,25 +230,6 @@ class LinkedInPublisher extends BasePublisher {
     }
 
     /**
-     * Upload image to LinkedIn (if needed)
-     */
-    private async uploadImage(imageUrl: string): Promise<ApiResponse<string | undefined>> {
-        try {
-            // This is a simplified version
-            // LinkedIn requires a multi-step process to upload images
-            // 1. Register upload
-            // 2. Upload binary data
-            // 3. Get asset URN
-
-            logger.info('LinkedIn image upload not implemented yet', { imageUrl });
-            return createApiResponse(false, 'Image upload not implemented', undefined, 'Use external image URLs');
-        } catch (error: unknown) {
-            const errMsg = error instanceof Error ? error.message : String(error);
-            return createApiResponse(false, 'Image upload failed', undefined, errMsg);
-        }
-    }
-
-    /**
      * Get post analytics (if available)
      */
     public async getPostAnalytics(postId: string): Promise<ApiResponse<{

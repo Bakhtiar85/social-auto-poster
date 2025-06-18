@@ -5,7 +5,6 @@ import { config } from '@/config';
 import { createServiceLogger } from '@/utils/logger';
 import { createApiResponse } from '@/utils/helpers';
 import { ApiResponse } from '@/types';
-import { app } from '@/app';
 import { memoryStore } from '@/services/memory/store';
 import { queueManager } from './queue-manager';
 
@@ -391,22 +390,6 @@ class CronJobsService {
         const tomorrow = new Date(now);
         tomorrow.setDate(tomorrow.getDate() + 1);
         return tomorrow.toISOString();
-    }
-
-    /**
-     * Check if it's safe to run jobs (not during maintenance hours, etc.)
-     */
-    private isSafeToRun(): boolean {
-        const now = new Date();
-        const hour = now.getUTCHours();
-
-        // Avoid running during typical maintenance hours (1-4 AM UTC)
-        if (hour >= 1 && hour <= 4) {
-            logger.info('Skipping job execution during maintenance hours', { hour });
-            return false;
-        }
-
-        return true;
     }
 
     /**

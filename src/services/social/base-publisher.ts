@@ -51,9 +51,9 @@ export abstract class BasePublisher {
      */
     public async checkRateLimit(): Promise<ApiResponse<boolean>> {
         try {
-            const now = new Date();
-            const hourStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours());
-            const dayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            // const now = new Date();
+            // const hourStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours());
+            // const dayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
             // This is a simplified rate limiting check
             // In production, you'd store this in a database or cache
@@ -169,6 +169,7 @@ export abstract class BasePublisher {
         apiCall: () => Promise<T>,
         action: string
     ): Promise<T> {
+        logger.debug('Retry API Call' + action);
         return await retry(
             apiCall,
             RETRY_CONFIG.maxRetries,

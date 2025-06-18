@@ -1,7 +1,7 @@
 // src/config/database.ts
 
 import path from 'path';
-import { MemoryStore, ProjectContext } from '@/types';
+import { MemoryStore } from '@/types';
 
 export const STORAGE_PATHS = {
     memory: {

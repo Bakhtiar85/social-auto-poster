@@ -1,11 +1,11 @@
 // src/services/ai/image-generator.ts
 
 import axios from 'axios';
-import { ImageRequest, ImageStyle, ImageDimensions, ApiResponse } from '@/types';
+import { ImageStyle, ImageDimensions, ApiResponse } from '@/types';
 import { config } from '@/config';
-import { API_ENDPOINTS, DEFAULT_HEADERS, REQUEST_TIMEOUTS, RETRY_CONFIG } from '@/config/apis';
+import { DEFAULT_HEADERS, REQUEST_TIMEOUTS } from '@/config/apis';
 import { IMAGE_GENERATION_PROMPTS } from '@/data/templates/prompts';
-import { createApiResponse, retry } from '@/utils/helpers';
+import { createApiResponse } from '@/utils/helpers';
 import { createServiceLogger, logApiRequest } from '@/utils/logger';
 
 const logger = createServiceLogger('ImageGenerator');
@@ -209,7 +209,7 @@ class ImageGeneratorService {
             // This is a placeholder for when image generation becomes available
             // For now, we'll use a simple text-based image generation
 
-            logger.warn('AI image generation not available, using simple image fallback');
+            logger.warn('AI image generation not available, using simple image fallback' + dimensions);
 
             // Extract key terms from prompt for simple image
             const keyTerms = this.extractKeyTermsFromPrompt(prompt);
