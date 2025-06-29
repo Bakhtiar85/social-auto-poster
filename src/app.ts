@@ -14,6 +14,7 @@ import { contentGenerator } from '@/services/ai/content-generator';
 import { imageGenerator } from '@/services/ai/image-generator';
 import { linkedinPublisher } from '@/services/social/linkedin';
 import { facebookPublisher } from '@/services/social/facebook';
+import { twitterPublisher } from '@/services/social/twitter';
 import { cronJobs } from '@/scheduler/cron-jobs';
 import { generateId, createApiResponse } from '@/utils/helpers';
 import { ProcessedCommit, PostHistory, SocialPlatform, ApiResponse } from '@/types';
@@ -143,7 +144,7 @@ class Application {
             }
 
             // Step 5: Generate content for each platform
-            const platforms: SocialPlatform[] = ['linkedin', 'facebook'];
+            const platforms: SocialPlatform[] = ['linkedin', 'facebook', 'twitter'];
 
             for (const platform of platforms) {
                 try {
@@ -225,7 +226,9 @@ class Application {
             };
 
             // Publish to platform
-            const publisher = platform === 'linkedin' ? linkedinPublisher : facebookPublisher;
+            const publisher = platform === 'linkedin' ? linkedinPublisher :
+                platform === 'facebook' ? facebookPublisher :
+                    twitterPublisher;
 
             if (!publisher.isEnabled()) {
                 return createApiResponse(false, `${platform} publisher not enabled`, false, 'Publisher not configured');
@@ -284,7 +287,8 @@ class Application {
         const validations = [
             { name: 'GitHub', fn: () => githubCollector.validateRepository() },
             { name: 'LinkedIn', fn: () => linkedinPublisher.validateToken() },
-            { name: 'Facebook', fn: () => facebookPublisher.validateToken() }
+            { name: 'Facebook', fn: () => facebookPublisher.validateToken() },
+            { name: 'Twitter', fn: () => twitterPublisher.validateToken() }
         ];
 
         for (const validation of validations) {
