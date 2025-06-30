@@ -106,6 +106,7 @@ class Application {
             }
 
             const rawCommits = commitsResult.data;
+            logger.info(`Fetched ${rawCommits.length} commits from GitHub`);
             if (rawCommits.length === 0) {
                 logger.info('No new commits found');
                 return createApiResponse(true, 'No new commits to process', { commitsProcessed, postsCreated, errors });
@@ -128,11 +129,11 @@ class Application {
             }
 
             // Step 3: Check if we should post based on context
-            const recommendations = contextManager.getPostingRecommendations();
-            if (!recommendations.successful || !recommendations.data?.shouldPost) {
-                logger.info('Skipping post based on recommendations', { reason: recommendations.data?.reason });
-                return createApiResponse(true, `Posting skipped: ${recommendations.data?.reason}`, { commitsProcessed, postsCreated, errors });
-            }
+            // const recommendations = contextManager.getPostingRecommendations();
+            // if (!recommendations.successful || !recommendations.data?.shouldPost) {
+            //     logger.info('Skipping post based on recommendations', { reason: recommendations.data?.reason });
+            //     return createApiResponse(true, `Posting skipped: ${recommendations.data?.reason}`, { commitsProcessed, postsCreated, errors });
+            // }
 
             // Step 4: Filter commits that haven't been posted
             const lastPostedCommit = memoryStore.getLastPostedCommit();
@@ -144,11 +145,12 @@ class Application {
             }
 
             // Step 5: Generate content for each platform
-            const platforms: SocialPlatform[] = ['linkedin', 'facebook', 'twitter'];
+            const platforms: SocialPlatform[] = ['twitter'];
 
             for (const platform of platforms) {
                 try {
                     const postResult = await this.createAndPublishPost(newCommits, platform);
+                    logger.info(`Post result for ${platform}`, postResult);
                     if (postResult.successful) {
                         postsCreated++;
                     } else {
@@ -328,7 +330,7 @@ class Application {
      * Manual trigger for testing
      */
     public async runOnce(): Promise<void> {
-        logger.info('Manual run triggered');
+        logger.info('processCommitsAndPost run triggered');
         const result = await this.processCommitsAndPost();
         if (result.successful) {
             logger.info('Manual run completed successfully', result.data);
@@ -360,7 +362,7 @@ if (require.main === module) {
         if (result.successful) {
             logger.info('Application started successfully');
             // Uncomment the next line to run once immediately for testing
-            // app.runOnce();
+            app.runOnce();
         } else {
             logger.error('Failed to start application', { error: result.error });
             process.exit(1);

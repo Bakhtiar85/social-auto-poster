@@ -25,18 +25,41 @@ const envSchema = Joi.object({
  */
 const githubCommitSchema = Joi.object({
     sha: Joi.string().required(),
+
     commit: Joi.object({
         message: Joi.string().min(VALIDATION_RULES.commit.minMessageLength).required(),
         author: Joi.object({
             name: Joi.string().required(),
             email: Joi.string().email().required(),
             date: Joi.string().isoDate().required()
+        }).required(),
+        committer: Joi.object({
+            name: Joi.string().required(),
+            email: Joi.string().email().required(),
+            date: Joi.string().isoDate().required()
         }).required()
-    }).required(),
+    }).required().unknown(true),
+
     author: Joi.object({
         login: Joi.string().required()
-    }).allow(null)
-});
+    }).allow(null).unknown(true),
+
+    committer: Joi.object({
+        login: Joi.string().required()
+    }).allow(null).unknown(true),
+
+    files: Joi.array().items(Joi.object({
+        filename: Joi.string().required(),
+        status: Joi.string().required()
+    }).unknown(true)).optional(),
+
+    stats: Joi.object({
+        total: Joi.number(),
+        additions: Joi.number(),
+        deletions: Joi.number()
+    }).optional().unknown(true)
+
+}).unknown(true);
 
 /**
  * Social post validation schema

@@ -86,6 +86,10 @@ export const dateUtils = {
         return moment().subtract(1, 'day').toISOString();
     },
 
+    getFromStart: (): string => {
+        return '2025-05-29T00:00:00Z';
+    },
+
     getTodayStart: (): string => {
         return moment().startOf('day').toISOString();
     },

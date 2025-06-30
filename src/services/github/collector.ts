@@ -63,7 +63,7 @@ class GitHubCollectorService {
      */
     public async fetchRecentCommits(since?: string): Promise<ApiResponse<GitHubCommit[]>> {
         try {
-            const sinceDate = since || dateUtils.getYesterday();
+            const sinceDate = since || dateUtils.getFromStart();
             const endpoint = API_ENDPOINTS.github.repos.commits(config.github.owner, config.github.repo);
 
             logger.info('Fetching commits from GitHub', {
@@ -159,6 +159,7 @@ class GitHubCollectorService {
             }
 
             const commits = commitsResult.data;
+            logger.info(`Fetched ${commits.length} commits, starting to fetch details`);
             if (commits.length === 0) {
                 return createApiResponse(true, 'No commits found', []);
             }

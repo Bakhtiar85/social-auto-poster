@@ -164,6 +164,18 @@ class CronJobsService {
         const jobInfo = this.jobs.get('main-posting');
         if (!jobInfo) return;
 
+        // Check for immediate run flag
+        if (process.env.RUN_NOW === 'true') {
+            logger.info('RUN_NOW flag detected - executing immediately');
+            setTimeout(async () => {
+                await queueManager.addJob('main-posting', {
+                    type: 'main-posting',
+                    priority: 'high',
+                    data: { manual: true }
+                });
+            }, 5000); // 5 second delay after startup
+        }
+
         const schedule = jobInfo.schedule;
 
         if (!cron.validate(schedule)) {
@@ -186,7 +198,7 @@ class CronJobsService {
             }
         }, {
             scheduled: false,
-            timezone: 'UTC'
+            timezone: 'Asia/Karachi'
         });
 
         jobInfo.task = task;
@@ -218,7 +230,7 @@ class CronJobsService {
             }
         }, {
             scheduled: false,
-            timezone: 'UTC'
+            timezone: 'Asia/Karachi'
         });
 
         jobInfo.task = task;
@@ -249,7 +261,7 @@ class CronJobsService {
             }
         }, {
             scheduled: false,
-            timezone: 'UTC'
+            timezone: 'Asia/Karachi'
         });
 
         jobInfo.task = task;
@@ -280,7 +292,7 @@ class CronJobsService {
             }
         }, {
             scheduled: false,
-            timezone: 'UTC'
+            timezone: 'Asia/Karachi'
         });
 
         jobInfo.task = task;
